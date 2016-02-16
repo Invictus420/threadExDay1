@@ -1,9 +1,12 @@
 package ex4;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 
 public class Turnstile implements Runnable{
   private final TurnstileCounter counter;
   private int count;
+  private final ReentrantLock lock = new ReentrantLock();
 
   final int COUNT_MAX = 1000;
 

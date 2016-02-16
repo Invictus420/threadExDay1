@@ -16,13 +16,25 @@ public class BankAccountUnsynchronized {
   public void deposit(double amount) {
 //    double newBalance = balance + amount;
 //    balance = newBalance;  
+      lock.lock();
+      try{
     balance += amount;
+      }
+      finally{
+          lock.unlock();
+      }
    }
 
   public void withdraw(double amount) {
 //    double newBalance = balance - amount;
 //    balance = newBalance;
-     balance -= amount;
+     lock.lock();
+      try{
+    balance -= amount;
+      }
+      finally{
+          lock.unlock();
+      }
    }
 
   public double getBalance() {
